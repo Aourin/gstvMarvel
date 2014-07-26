@@ -1,0 +1,4 @@
+/bower_components/*
+/node_modules/*
+pax_global_header
+.sublime-gulp.cache

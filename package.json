@@ -1,0 +1,30 @@
+{
+  "name": "gstvMarvel",
+  "version": "0.0.0",
+  "description": "Website using AngularJS and Marvel API for Harry Ho application for GSTV",
+  "main": "gulpfile.js",
+  "dependencies": {
+    "gulp": "~3.8.6",
+    "gulp-ruby-sass": "~0.7.0",
+    "gulp-sass": "~0.7.2"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "gulp": "gulp"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Aourin/gstvMarvel.git"
+  },
+  "keywords": [
+    "gstv",
+    "marvel",
+    "angular"
+  ],
+  "author": "Harry Ho",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Aourin/gstvMarvel/issues"
+  },
+  "homepage": "https://github.com/Aourin/gstvMarvel"
+}

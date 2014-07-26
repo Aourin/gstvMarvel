@@ -1,0 +1,32 @@
+{
+  "name": "gstvMarvel",
+  "version": "0.0.0",
+  "homepage": "https://github.com/Aourin/gstvMarvel",
+  "authors": [
+    "Aourin <TheTitan8706@gmail.com>"
+  ],
+  "description": "Bower components for AngularJS and Marvel API site",
+  "moduleType": [
+    "node"
+  ],
+  "keywords": [
+    "angular",
+    "marvel",
+    "gulp",
+    "marvel"
+  ],
+  "license": "MIT",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular-bootstrap": "~0.11.0",
+    "angular": "~1.2.21",
+    "jquery": ">= 1.9.0"
+  }
+}
