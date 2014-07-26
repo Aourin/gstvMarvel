@@ -3387,7 +3387,6 @@ a.thumbnail:hover, a.thumbnail:focus, a.thumbnail.active {
   border-color: #428bca; }
 
 .alert {
-  width: 1px;
   padding: 15px;
   margin-bottom: 20px;
   border: 1px solid transparent;

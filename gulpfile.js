@@ -1,5 +1,6 @@
 var gulp = require('gulp');
 var sass = require('gulp-sass');
+var merge = require('merge-stream');
 
 var path = "C:/git/gstvMarvel/";
 
@@ -7,10 +8,14 @@ var path = "C:/git/gstvMarvel/";
 gulp.task('sassyPants',function(event){
 	var tag = 'task-sass: ';
 	console.log(tag + ' compiling scss');
-	return gulp.src(path + 'scss/bootstrap/stylesheets/bootstrap.scss')
+	
+	var bootstrap = gulp.src(path + 'scss/bootstrap/stylesheets/bootstrap.scss')
+		.pipe(sass())
+		.pipe(gulp.dest(path + 'css'))
+	var harry = gulp.src(path + 'scss/harry/harry.scss')
 		.pipe(sass())
 		.pipe(gulp.dest(path + 'css'));
-
+	return merge(bootstrap,harry);
 });
 //Setup the watch
 gulp.task('nightsWatch',function(){
