@@ -1,6 +1,7 @@
 $shadow-size: 8px;
 
 .panel{
+	border: 1px solid #DEDEDE;
 	input.form-control{
 		padding: $base-padding + 5px !important;
 	}

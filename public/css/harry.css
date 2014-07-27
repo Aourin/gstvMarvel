@@ -57,8 +57,12 @@ body, h1, h2, h3, h4, h5, p, input, div, span {
       .list-view .list-item .detail-image.round {
         border-radius: 60px; }
 
-.panel.shadow {
-  box-shadow: 8px 8px #DEDEDE; }
+.panel {
+  border: 1px solid #DEDEDE; }
+  .panel input.form-control {
+    padding: 20px !important; }
+  .panel.shadow {
+    box-shadow: 8px 8px #DEDEDE; }
 
 .header {
   background: #62ff95;

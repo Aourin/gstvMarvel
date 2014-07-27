@@ -6,7 +6,8 @@
   "dependencies": {
     "gulp": "~3.8.6",
     "gulp-ruby-sass": "~0.7.0",
-    "gulp-sass": "~0.7.2"
+    "gulp-sass": "~0.7.2",
+    "express"  : "~3.4.4"
   },
   "devDependencies": {},
   "scripts": {
