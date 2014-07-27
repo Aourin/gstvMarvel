@@ -1,2 +1,85 @@
+.bg-red {
+  background: red; }
+
+.theme {
+  background: #62ff95; }
+
+.base-padding {
+  padding: 15px; }
+
+.heavy-padding {
+  padding: 20px; }
+
+.light-padding {
+  padding: 10px; }
+
+.full-width {
+  width: 100%; }
+
+.half-width {
+  width: 50%; }
+
+.quarter-width {
+  width: 25%; }
+
+body, h1, h2, h3, h4, h5, p, input, div, span {
+  font-family: "Open Sans"; }
+
+.list-view {
+  list-style: none;
+  margin-left: 0px;
+  padding-left: 0px; }
+  .list-view .list-item {
+    list-style: none;
+    padding: 5px;
+    padding-top: 10px;
+    border-bottom: 1px solid #f4f4f4; }
+    .list-view .list-item:last-child {
+      border-bottom: none; }
+    .list-view .list-item .details {
+      width: calc(100% - 100px);
+      display: inline-block;
+      padding: 5px;
+      margin: 0px 0px 0px 10px; }
+      .list-view .list-item .details .title {
+        font-size: 24px;
+        margin: 0px !important; }
+    .list-view .list-item .detail-image {
+      width: 60px;
+      height: 60px;
+      overflow: hidden;
+      float: left;
+      display: inline-block; }
+      .list-view .list-item .detail-image img {
+        width: 100%;
+        height: auto;
+        display: block; }
+      .list-view .list-item .detail-image.round {
+        border-radius: 60px; }
+
+.panel.shadow {
+  box-shadow: 8px 8px #DEDEDE; }
+
 .header {
-  height: 40px; }
+  background: #62ff95;
+  position: fixed;
+  top: 0px;
+  left: 0px;
+  width: 100%;
+  z-index: 100; }
+  .header.trim {
+    border-bottom: 7.14286px solid #62cc62;
+    height: 58.33333px; }
+  .header .title {
+    font-size: 24px;
+    line-height: 16.66667px; }
+
+.content {
+  padding: 15px;
+  background: url(http://subtlepatterns.com/patterns/geometry.png);
+  display: block;
+  height: calc(100% - 50px);
+  margin-top: 60px;
+  width: 100%;
+  position: absolute;
+  z-index: 50; }

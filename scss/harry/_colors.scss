@@ -1,6 +1,17 @@
 
 $color-red: red;
+$color-green: rgb(98, 255, 149);
+$color-green-alt: $color-green * .5;
 
+$theme-main: $color-green;
+$theme-main-shadow: $color-green-alt;
+$theme-main-trim-dark: $theme-main - #033;
+$theme-main-trim-light: $theme-main + #2C2;
+
+$shadow-color: #DEDEDE;
 .bg-red{
 	background: $color-red;
+}
+.theme{
+	background: $theme-main;
 }

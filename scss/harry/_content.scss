@@ -1,0 +1,11 @@
+
+.content{
+	padding: $base-padding;
+	background: url(http://subtlepatterns.com/patterns/geometry.png);
+	display: block;
+	height: calc(100% - 50px);
+	margin-top: $header-height + 10px;
+	width: 100%;
+	position: absolute;
+	z-index: 50;
+}

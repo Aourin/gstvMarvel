@@ -1,0 +1,37 @@
+
+<div>
+	<button class="btn" ng-click="getCharacters()">Get Characters</button>
+	<div class="row">
+		<div class="col-md-4">
+			<div class="panel shadow"> 
+			<form class="form-inline form">
+				<div class="form-group inline-form">
+			  	 	<div class="input-group">
+			  	 		<div class="half-width">
+			  	 			<input class="form-control" type="text" placeholder="Enter Name">
+			  	 		</div>
+						<div class="button-group">
+						    <span class="input-group-btn">
+						        <button class="btn btn-default">Find</button>
+						    </span>
+						</div>
+			   		</div>
+			  </div>
+				<ul class="list-view">
+					<li class="list-item" ng-repeat="character in characters">
+						<div class="detail-image round">
+							<img src="{{character.thumbnail}}" />
+						</div>
+						<div class="details">
+							<h2 class="title">{{character.name}}</h2>
+							<p class="desc">{{character.description}}</p>
+						</div>
+					</li>
+				</ul>
+			</div>
+		</div>
+		<div class="col-md-8">
+
+		</div>
+	</div>
+</div>

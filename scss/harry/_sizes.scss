@@ -1,0 +1,24 @@
+$base-padding: 15px;
+$base-margin: 15px;
+
+//Padding
+.base-padding{
+	padding: $base-padding;
+}
+.heavy-padding{
+	padding: $base-padding + 5px;
+}
+.light-padding{
+	padding: $base-padding - 5px;
+}
+
+//Widths
+.full-width{
+	width: 100%;
+}
+.half-width{
+	width: 50%;
+}
+.quarter-width{
+	width: 25%;
+}

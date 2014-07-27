@@ -1,0 +1,10 @@
+$shadow-size: 8px;
+
+.panel{
+	input.form-control{
+		padding: $base-padding + 5px !important;
+	}
+	&.shadow{
+		box-shadow: $shadow-size $shadow-size $shadow-color;
+	}
+}
