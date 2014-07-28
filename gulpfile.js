@@ -30,6 +30,7 @@ gulp.task('nightsWatch',function(){
 	//Watch bootstrap files
 	gulp.watch(path + 'scss/bootstrap/stylesheets/**/*.scss', ['sassyPants']);
 	gulp.watch(path + 'scss/harry/**/*.scss', ['sassyPants']);
+	gulp.watch(path + 'gulpfile.js',['default']);
 });
 
 //Compile JS
@@ -43,14 +44,15 @@ gulp.task('scripts', function() {
   	bower + 'lodash/dist/lodash.min.js'])
     .pipe(concat('library.js'))
     .pipe(gulp.dest('./public/js/'));
-});
+}); 
 //Start Node Server
 gulp.task('startServer',function(){
- nodemon({ script: 'server.js', ext: 'html js'})
-    .on('change')
-    .on('restart', function () {
-      console.log('restarted!')
+	 nodemon({ script: 'server.js', ext: 'html js'})
+    	.on('change')
+   		.on('restart', function () {
+      		console.log('restarted!')
     });
 })
 //sets up default task
-gulp.task('default', ['sassyPants','scripts','nightsWatch','startServer']);
+gulp.task('default', ['sassyPants','scripts','nightsWatch']);
+gulp.task('dev',['default','startServer']);
