@@ -23,7 +23,7 @@ app.config(['$stateProvider','$urlRouterProvider',
 		$stateProvider.
 			state('home',{
 				url: '/app',
-				template: 'MOOO',
+				template: 'moo',
 				controller: 'MainController'
 			})
 			.state('characters',{

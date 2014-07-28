@@ -1,0 +1,20 @@
+$pill-text-color: white;
+$nav-pill-background: $theme-main-highlight-2;
+$pill-color: $theme-main-highlight;
+
+.nav-pills{
+	background: $nav-pill-background;
+	.pill{
+		padding: $base-padding;
+		color: $pill-text-color;
+		font-size: 20px;
+		&.active{
+			font-weight: 800;
+			background: $pill-color;
+			color: $pill-text-color;
+		}
+		&:hover{
+			background: $pill-color / 1.2;
+		}
+	}
+}

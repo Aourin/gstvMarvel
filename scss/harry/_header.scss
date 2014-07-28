@@ -2,7 +2,7 @@ $header-height: 50px;
 
 .header{
 	background: $theme-main;
-
+	color: white;
 	position: fixed;
 	top: 0px;
 	left: 0px;
@@ -10,14 +10,20 @@ $header-height: 50px;
 	z-index: 100;
 
 	h1,h2,h3,h4,h5,p,div,span{
+		color: white;
 	}
-
+	h1{
+		color: white;
+		font-weight: 300;
+	}
 	&.trim{
-		border-bottom: ($header-height / 7) solid $theme-main-trim-dark;
+		border-bottom: ($header-height / 7) solid $theme-main-highlight;
 		height: $header-height + ($header-height / 6);
 	}
 	.title{
-		$font-size: 24px;
+		$font-size: 28px;
+		color: white;
+		font-weight:500;
 		font-size: $font-size;
 		line-height: $header-height / 3;
 	}

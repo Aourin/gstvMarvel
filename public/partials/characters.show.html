@@ -9,26 +9,72 @@
 		<div class="row">
 			<div class="col-md-6">
 				<h1 class="title">{{character.name}}</h1>
+				<h5>Carry</h5>
+				<div class="progress">
+					<div class="progress-bar progress-bar-success" role="progressbar" aria-valuemin="0" aria-valuemax="100" style="width: {{stats.carry}}%">
+					</div>
+				</div>
+				<h5>Support</h5>
+				<div class="progress">
+					<div class="progress-bar progress-bar-info" role="progressbar" aria-valuemin="0" aria-valuemax="100" style="width: {{stats.support}}%">
+					</div>
+				</div>
+				<h5>Tank</h5>
+				<div class="progress">
+					<div class="progress-bar progress-bar-warning" role="progressbar" aria-valuemin="0" aria-valuemax="100" style="width: {{stats.tank}}%">
+					</div>
+				</div>
+				<h5>Difficulty</h5>
+				<div class="progress">
+					<div class="progress-bar progress-bar-danger" role="progressbar" aria-valuemin="0" aria-valuemax="100" style="width: {{stats.difficulty}}%">
+					</div>
+				</div>
 			</div>
 			<div class="col-md-6">
 				<img src="{{character.thumbnail | imageLocation}}" class="full-width"/>
 			</div>
 		</div>
 	</div>
-	<div class="panel-body">
-		<h3>Comics {{character.comics.available}}</h3>
+	<ul class="nav nav-pills">
+	  	<li class="pill" ng-class="{active: selected == 'profile'}" ng-click="selected = 'profile'">Profile</li>
+	  	<li class="pill" ng-class="{active: selected == 'comics'}" ng-click="selected = 'comics'">Comics <span class="badge">{{character.comics.available}}</span></li>
+	  	<li class="pill" ng-class="{active: selected == 'series'}" ng-click="selected = 'series'">Series <span class="badge">{{character.series.available}}</span></li>
+	</ul>
 
-		<div ng-repeat="comic in character.comics.items">
-			<p>{{comic.name}}</p>
-		</div>
-		<h3>Series {{character.series.available}}</h3>
+
+	<div class="panel-body" ng-if="selected == 'profile'">
+		<h4>Description</h4>
+		<p class="description">{{character.description | notAvailable}}</p>
+
+		<a class="btn btn-primary pull-right" href="{{character.urls[0].url}}">Read More</a>
+	</div>
+
+	<div class="panel-body" ng-if="selected == 'comics'">
+		<h4>Recent Comics</h4>
+		<p class="description" ng-if="comics.length <= 0">No Recent Comics Available</p>
+		<div class="loading base-padding text-center" ng-if="loading">
+  	 		<h2>Getting Comics</h2>
+  	 		<i class="fa fa-spinner fa-5x spin-fast"></i>
+	  	</div>
+	  	<div class="row">
+		  	<div class="col-sm-2 padding-5" ng-repeat="comic in comics">
+		  		<img src="{{comic.thumbnail | imageLocation}}" class="full-width"/>
+		  	</div>
+	  	</div>
+	  	<div class="row base-padding">
+	  		<h4>Other Comics</h4>
+			<p class="description" ng-if="character.comics.available == 0">Not Available</p>
+			<div ng-if="character.comics.available > 0">
+	  			<p class="description"  ng-repeat="comic in character.comics.items"  >{{comic.name}}</p>
+	  		</div>
+	  	</div>
+	</div>
+
+	<div class="panel-body" ng-if="selected == 'series'">
+		<h4>Series</h4>
+		<p class="description" ng-if="character.comics.available == 0">Not Available</p>
 		<div ng-repeat="item in character.series.items">
-			<p>{{item.name}}</p>
+			<p class="description">{{item.name}}</p>
 		</div>
 	</div>
-
-		
-
-	</div>
-	<a class="btn btn-primary pull-right" href="{{character.urls[0].url}}">View More</a>
 </div>

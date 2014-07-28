@@ -4,6 +4,7 @@ appControllers
 			console.log('main');
 		}
 	])
+	//Character List Controller
 	.controller('CharacterListController', ['$scope','Marvel','Tag','$q',
 		function($scope,Marvel,Tag,$q){
 			$scope.Tag = new Tag({tag: 'CharacterListController:'});
@@ -12,21 +13,17 @@ appControllers
 			$scope.search = function(){
 				var name = $scope.searchQuery;
 				console.log(name);
-				var promise = Marvel.getCharacters(name)
+				var promise = Marvel.getCharacters(name);
 				$scope.loading = true;
 				promise.then(
 					function(characters){
 						$scope.characters = characters;
 						$scope.loading = false;
-						chars = characters;
 					},
 					function(error){
 						$scope.error = error;
 						$scope.loading = false;
 					});
-			}
-			$scope.showCharacter = function(id){
-
 			}
 			//A Function made just to moo for fun
 			$scope.moo = function(){
@@ -39,13 +36,59 @@ appControllers
 			});
 		}
 	])
+	//Character Show Controller 
 	.controller('CharacterShowController',['$scope','$stateParams','Marvel','Tag',
-		function($scope,$stateParams,Marvel,Tag){
+		function($scope,$stateParams,Marvel,Tag){  
 			$scope.Tag = new Tag({tag: 'CharacterShowController:'});
-			console.log($stateParams);
-			$scope.Tag.log($stateParams.character_id);
+			$scope.stats = {};
+			$scope.stats.carry = Math.random() * 100;
+			$scope.stats.support = Math.random() * 100;
+			$scope.stats.tank = 100 - $scope.stats.carry - $scope.stats.support;
+			$scope.stats.difficulty = Math.random() * 100;
+
+			//Init the character from local or serer
 			$scope.character = Marvel.showCharacter($stateParams.character_id);
-			console.log($scope.character);
+			
+			//Check if character is in a local collection
+			if($scope.character == undefined){
+				//request character from backend if not
+				var promise = Marvel.getCharacter($stateParams.character_id);
+				promise.then(function(character){
+					$scope.character = character;
+					$scope.getComics();
+				},function(){
+					$state.go('characters');
+				});
+			} else{
+
+			}
+			//Set selected deault
+			$scope.selected = 'profile';
+
+			//Retrieve comics for character
+			$scope.getComics = function(){
+				var promise = Marvel.getCharacterComics($scope.character.id);
+				$scope.loading = true;
+				promise.then(
+					function(comics){
+						$scope.comics = comics;
+						$scope.loading = false;
+						chars = comics;
+					},
+					function(error){
+						$scope.error = error;
+						$scope.loading = false;
+					});
+			}
+			//Watch characters object
+			var characters = $scope.$watch('characters',function(oldval,newval){
+				$scope.Tag.log('char change');
+				$scope.getComics();
+			});
+
+			$scope.$on('destroy',function(){
+				characters();
+			})
 		}
 	]);
 	var chars;

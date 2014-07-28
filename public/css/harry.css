@@ -5,7 +5,7 @@
   background: #575757; }
 
 .theme {
-  background: #62ff95; }
+  background: #428bca; }
 
 .color-red {
   color: red; }
@@ -36,6 +36,24 @@
 
 .light-padding {
   padding: 10px; }
+
+.padding-0 {
+  padding: 0px; }
+
+.padding-5 {
+  padding: 5px; }
+
+.padding-10 {
+  padding: 10px; }
+
+.padding-15 {
+  padding: 15px; }
+
+.padding-20 {
+  padding: 20px; }
+
+.padding-25 {
+  padding: 25px; }
 
 .full-width {
   width: 100%; }
@@ -162,18 +180,39 @@ body, h1, h2, h3, h4, h5, p, input, div, span {
   .panel.shadow {
     box-shadow: 8px 8px #DEDEDE; }
 
+.nav-pills {
+  background: #4C91AC; }
+  .nav-pills .pill {
+    padding: 15px;
+    color: white;
+    font-size: 20px; }
+    .nav-pills .pill.active {
+      font-weight: 800;
+      background: #3073a9;
+      color: white; }
+    .nav-pills .pill:hover {
+      background: #28608d; }
+
 .header {
-  background: #62ff95;
+  background: #428bca;
+  color: white;
   position: fixed;
   top: 0px;
   left: 0px;
   width: 100%;
   z-index: 100; }
+  .header h1, .header h2, .header h3, .header h4, .header h5, .header p, .header div, .header span {
+    color: white; }
+  .header h1 {
+    color: white;
+    font-weight: 300; }
   .header.trim {
-    border-bottom: 7.14286px solid #62cc62;
+    border-bottom: 7.14286px solid #3073a9;
     height: 58.33333px; }
   .header .title {
-    font-size: 24px;
+    color: white;
+    font-weight: 500;
+    font-size: 28px;
     line-height: 16.66667px; }
 
 .content {
@@ -189,3 +228,7 @@ body, h1, h2, h3, h4, h5, p, input, div, span {
 .desc-block {
   display: inline-block;
   padding: 0px 5px 0px 0px; }
+
+.description {
+  color: #999;
+  font-style: italic; }

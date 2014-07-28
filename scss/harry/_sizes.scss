@@ -11,6 +11,13 @@ $base-margin: 15px;
 .light-padding{
 	padding: $base-padding - 5px;
 }
+$i: 0;
+@while $i <= 25{
+	.padding-#{$i}{
+		padding: #{$i}px;
+	}
+	$i: $i + 5;
+}
 
 //Widths
 .full-width{

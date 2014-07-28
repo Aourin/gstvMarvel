@@ -22,6 +22,7 @@ appFilters
 				return 'http://i.annihil.us/u/prod/marvel/i/mg/b/40/image_not_available.jpg';
 		}
 	})
+	//Total comic count color filter
 	.filter('available',function(){
 		return function(available,total){
 			if(available <= 0)
@@ -34,5 +35,13 @@ appFilters
 				return 'green';
 			else if(available >= total * .75)
 				return 'purple';
+		}
+	})
+	.filter('notAvailable',function(){
+		return function(available){
+			if(available == null || available == undefined || available.length <= 0)
+				return 'Not Available';
+			else
+				return available;			
 		}
 	})

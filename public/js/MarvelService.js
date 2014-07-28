@@ -1,3 +1,4 @@
+//Marvel Service Resource JS SDK
 appServices.service("Marvel",["$rootScope","$resource","Tag","$q",
 	function($rootScope,$resource,Tag,$q){
 		//Instantiate a new MarvelAPI with options
@@ -19,7 +20,27 @@ appServices.service("Marvel",["$rootScope","$resource","Tag","$q",
 			id: "@id",
 			name: "@name"
 		});
+		this.Comics = $resource(api.Comics,{
+			id: "@id"
+		});
+		//Retrieves a single character
+		this.getCharacter = function(id){
+			var deferred = $q.defer();
+			//Get singular character by id from backend
+			this.CharactersList.get({id: id})
+				.$promise.then(
+					function(characterIn){
+						Tag.log("retrieved single character promise");
+						Tag.log(characterIn.data[0]);
+						deferred.resolve(characterIn.data[0]);
+				},
+					function(response){
+						Tag.error(response.error);
+						deferred.rejected(response.error);
+				});
 
+			return deferred.promise;
+		}
 		//service function to retrieve characters 
 		this.getCharacters = function(name,offset){
 			var offest = offset || 0;
@@ -27,12 +48,14 @@ appServices.service("Marvel",["$rootScope","$resource","Tag","$q",
 			//performs resource GET
 			this.CharactersList.get({name: name,offset:offset})
 				.$promise.then(
-					function(characters){
-						Tag.log("retrieved character promise");
-						Tag.log(characters);
-						this.characters = characters.data;
-						localStorage.setItem('characters',angular.toJson(characters.data));
-						deferred.resolve(this.characters);
+					function(charactersIn){
+						Tag.log("retrieved charactersList promise");
+						Tag.log(charactersIn);
+						localStorage.setItem('characters',angular.toJson(charactersIn.data));
+						console.log(self.characters);
+						self.characters = charactersIn.data;
+						console.log(self.characters);
+						deferred.resolve(self.characters);
 				},
 					function(response){
 						Tag.error(response.error);
@@ -40,6 +63,25 @@ appServices.service("Marvel",["$rootScope","$resource","Tag","$q",
 				});
 			return deferred.promise;
 		}
+		//Get the comics based on a characterId
+		this.getCharacterComics = function(id){
+			var deferred = $q.defer();
+			this.Comics.get({id: id})
+				.$promise.then(
+					function(comics){
+						Tag.log("retrieved comics comics promise");
+						Tag.log(comics);
+						self.comics = comics.data;
+						localStorage.setItem('comics',angular.toJson(comics.data));
+						deferred.resolve(self.comics);
+				},
+					function(response){
+						Tag.error(response.error);
+						deferred.rejected(response.error);
+				});
+			return deferred.promise;
+		}
+		//Show the character from the local character collection
 		this.showCharacter = function(id){
 			console.log(this.characters);
 			return _.findWhere(self.characters,{id: parseInt(id)});
@@ -54,7 +96,7 @@ function MarvelApi(options){
 	this.apiVersion = options.apiVersion;
 	this.apiPath = this.apiBase + this.apiVersion;
 	this.Characters = this.apiPath + "/characters/:id";
-	this.Comics = this.apiPath + "/comics";
+	this.Comics = this.Characters + "/comics";
 }
 var moo;
 var charas;

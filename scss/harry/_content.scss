@@ -1,3 +1,4 @@
+$description-color: $color-gray;
 
 .content{
 	padding: $base-padding;
@@ -12,4 +13,8 @@
 .desc-block{
 	display: inline-block;
 	padding: 0px 5px 0px 0px;
+}
+.description{
+	color: $description-color;
+	font-style: italic;
 }

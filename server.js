@@ -5,16 +5,17 @@ var app         = express();
 var md5 	    = require('MD5');
 var marvelApi   = require('marvel-api');
 var url 	 	= require('url');
+var mongoose	= require('mongoose');
+var Character 	= require('./server/Character');
 
 app.configure(function() {
 		app.use(express.static(__dirname + '/public/')); 		// set the static files location /public/img will be /img for users
 		app.use(express.logger('dev')); 						// log every request to the console
 		app.use(express.bodyParser()); 							// pull information from html in POST
 });
+//Connect to local mongo
+mongoose.connect('mongodb://localhost/gstvMarvel');
 
-// listen (start app with node server.js) ======================================
-
-console.log('started');
 
 app.get('/app/*', function(req, res) {
 	res.sendfile('public/index.html'); // load the single view file (angular will handle the page changes on the front-end)
@@ -55,19 +56,41 @@ app.get('/api/v1/characters',function(req,res){
 	}
 	
 });
+
 //api for getting a character by id
 app.get('/api/v1/characters/:character_id',function(req,res){
-	console.log(req.params.character_id);
+
+	var url_parts = url.parse(req.url, true);
+	var query = url_parts.query;
+	console.log(query);
 	marvel.characters.find(req.params.character_id)
 		.then(function(character){
 			res.json(character);
 		})
 		.fail(function(){
 			res.json({isSuccessful: false, error: 'Error retrieving character'});
+		});
+})
+app.get('/api/v1/characters/:character_id/comics',function(req,res){
+	marvel.characters.comics(req.params.character_id, 10, 0)
+		.then(function(comics){
+			res.json(comics);
 		})
+		.fail(function(){
+			res.json({isSuccessful: false, error: 'Error getting characters comics'});
+		});
 })
 // app.get('/api/v1/characters',function(req,res){
-
+app.get('/api/v1/test',function(req,res){
+	Character.findOne('123',function(err,character){
+		if(err)
+			res.send(err);
+		if(character == null)
+			res.json({});
+		else
+			res.json(character);
+	})
+})
 // })
 
 app.listen(80);
