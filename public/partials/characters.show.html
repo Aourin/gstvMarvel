@@ -1,4 +1,34 @@
 <div class="panel shadow">
-	<div class="panel-heading"><h4 class="title">{{character.name}}</h4>
-	<div class="btn btn-primary" ng-click="getCharacter()">Get Character</div>
+	<div class="loading" ng-if="character == undefined">
+		<div class="loading base-padding text-center" >
+  	 		<h2>Grabbing Information</h2>
+  	 		<i class="fa fa-spinner fa-5x spin-fast"></i>
+	  	 </div>
+	</div>
+	<div class="panel-heading">
+		<div class="row">
+			<div class="col-md-6">
+				<h1 class="title">{{character.name}}</h1>
+			</div>
+			<div class="col-md-6">
+				<img src="{{character.thumbnail | imageLocation}}" class="full-width"/>
+			</div>
+		</div>
+	</div>
+	<div class="panel-body">
+		<h3>Comics {{character.comics.available}}</h3>
+
+		<div ng-repeat="comic in character.comics.items">
+			<p>{{comic.name}}</p>
+		</div>
+		<h3>Series {{character.series.available}}</h3>
+		<div ng-repeat="item in character.series.items">
+			<p>{{item.name}}</p>
+		</div>
+	</div>
+
+		
+
+	</div>
+	<a class="btn btn-primary pull-right" href="{{character.urls[0].url}}">View More</a>
 </div>

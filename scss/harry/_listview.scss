@@ -9,6 +9,7 @@ $thumbnail-size: 60px;
 	.list-item{
 		$background: #FEFEFE;
 		list-style: none;
+		cursor: pointer;
 		padding:  ($base-padding - 10px) $base-padding;
 		padding-top: 10px;
 		border-bottom: 1px solid ($background - #0A0A0A);

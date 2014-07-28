@@ -6,12 +6,13 @@ appServices.service("Marvel",["$rootScope","$resource","Tag","$q",
 			apiBase : "http://localhost",
 			apiVersion : "/api/v1"
 		});
+		var self = this;
 		//Creates a service tagger
 		Tag = new Tag({tag: "MarvelService: "});
 
 		//initializes the character collection via localStorage
 		var characters = localStorage.getItem('characters');
-		this.characters =  characters !== undefined ? angular.fromJson(characters) : {};
+		this.characters =  characters !== undefined ? angular.fromJson(characters) : undefined;
 
 		//CharacterList resource
 		this.CharactersList = $resource(api.Characters,{
@@ -39,18 +40,13 @@ appServices.service("Marvel",["$rootScope","$resource","Tag","$q",
 				});
 			return deferred.promise;
 		}
-	}
-]);
-//Character Collection Service
-appServices.service('Characters',['$scope',
-	function($scope){
-		this.list = {};
-		this.getCharacter = function(id){
-			return _.find(this.list, {id: id});
-
+		this.showCharacter = function(id){
+			console.log(this.characters);
+			return _.findWhere(self.characters,{id: parseInt(id)});
 		}
 	}
-])
+]);
+
 //Marvel API Options Object
 function MarvelApi(options){
 	this.apiKey = options.apiKey;
@@ -60,3 +56,5 @@ function MarvelApi(options){
 	this.Characters = this.apiPath + "/characters/:id";
 	this.Comics = this.apiPath + "/comics";
 }
+var moo;
+var charas;

@@ -13,9 +13,20 @@ appControllers
 				var name = $scope.searchQuery;
 				console.log(name);
 				var promise = Marvel.getCharacters(name)
-				promise.then(function(){
-					console.log('resolved');
-				});
+				$scope.loading = true;
+				promise.then(
+					function(characters){
+						$scope.characters = characters;
+						$scope.loading = false;
+						chars = characters;
+					},
+					function(error){
+						$scope.error = error;
+						$scope.loading = false;
+					});
+			}
+			$scope.showCharacter = function(id){
+
 			}
 			//A Function made just to moo for fun
 			$scope.moo = function(){
@@ -28,16 +39,13 @@ appControllers
 			});
 		}
 	])
-	.controller('CharacterShowController',['$scope','$stateParams','Marvel',
-		function($scope,$stateParams,Marvel){
+	.controller('CharacterShowController',['$scope','$stateParams','Marvel','Tag',
+		function($scope,$stateParams,Marvel,Tag){
 			$scope.Tag = new Tag({tag: 'CharacterShowController:'});
-			$scope.getCharacter = function(){
-				// Marvel.Characters
-				// 	.get({id: $stateParams.character_id})
-				// 	.$promise.then(function(character){
-				// 		console.log(character);
-				// 		$scope.character = character;
-				// 	});
-			}
+			console.log($stateParams);
+			$scope.Tag.log($stateParams.character_id);
+			$scope.character = Marvel.showCharacter($stateParams.character_id);
+			console.log($scope.character);
 		}
 	]);
+	var chars;

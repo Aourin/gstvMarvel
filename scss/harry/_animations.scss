@@ -1,0 +1,17 @@
+$speed-fast: 1.5s;
+$speed-medium: 3s;
+$speed-slow: 4.5s;
+.spin-fast {
+	animation: $speed-fast spin infinite linear;
+	-webkit-animation: $speed-fast spin infinite linear;
+}
+
+
+@keyframes spin{
+	0%{transform: rotateZ(0deg);}
+	100%{transform: rotateZ(360deg);}
+}
+@-webkit-keyframes spin{
+	0%{-webkit-transform: rotateZ(0deg);}
+	100%{-webkit-transform: rotateZ(360deg);}
+} 

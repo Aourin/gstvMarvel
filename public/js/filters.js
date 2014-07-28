@@ -22,3 +22,17 @@ appFilters
 				return 'http://i.annihil.us/u/prod/marvel/i/mg/b/40/image_not_available.jpg';
 		}
 	})
+	.filter('available',function(){
+		return function(available,total){
+			if(available <= 0)
+				return 'red';
+			else if(available <= total / 4 && available > 0)
+				return 'black';
+			else if(available >= total / 4 && available < total / 2)
+				return 'orange';
+			else if(available >= total / 2 && available < total * .75)
+				return 'green';
+			else if(available >= total * .75)
+				return 'purple';
+		}
+	})

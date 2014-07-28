@@ -11,24 +11,37 @@
 					on-press-enter="search()"
 					ng-model="searchQuery">
 	  	 	</div>
-			<ul class="list-view">
-				<li class="list-item" ng-repeat="character in characters">
+	  	 	<div class="base-padding" ng-if="characters == undefined">
+	  	 		<h3>A new person?</h3>
+	  	 		<p>Well, well, well, look at what we have here. You must be new because there are no previous searches.Start typing some stuff in to see what kind of stuff you can get</p>
+	  	 	</div>
+	  	 	<div class="loading base-padding text-center" ng-if="loading">
+	  	 		<h2>Searching for</h2>
+	  	 		<i class="fa fa-spinner fa-5x spin-fast"></i>
+	  	 		<h2 ng-if="searchQuery">'{{searchQuery}}'</h2>
+	  	 		<h2 ng-if="searchQuery == undefined">Some Characters</h2>
+	  	 	</div>
+	  	 	<div class="no-results base-padding" ng-if="characters.length <= 0">
+	  	 		<h3>Whelp! Looks like theres noone around here with that name</h3>
+	  	 	</div>
+			<ul class="list-view" ng-if="loading !== true" >
+				<li class="list-item" ng-repeat="character in characters" ui-sref="characters.show({ character_id: character.id })">
 					<div class="detail-image round">
 						<img src="{{character.thumbnail | imageLocation}}" />
 					</div>
 					<div class="details">
 						<h2 class="title">{{character.name}}</h2>
-						<p class="desc">Comics Available {{character.comics.available}}</p>
+						<p class="desc-block"><span class="color-{{character.comics.available | available: 50}}">Comics {{character.comics.available}}</span></p>
+						<p class="desc-block"><span class="color-{{character.series.available | available: 10}}">Series {{character.series.available}}</span></p>
+						<p class="desc-block"><span class="color-{{character.stories.available | available: 10}}">Stories {{character.stories.available}}</span></p>
 					</div>
 				</li>
 			</ul>
-			<div>
-				<div class="btn btn-primary">Previous</div>
-				<div class="btn btn-primary">Next</div>
-			</div>
 		</div>
 	</div>
 	<div class="col-md-8">
 		<div ui-view></div>
 	</div>
 </div>
+
+<div class="alert alert-danger" ng-if="error">{{error}}</div>
