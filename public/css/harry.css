@@ -1,6 +1,9 @@
 .bg-red {
   background: red; }
 
+.bg-charcoal {
+  background: #575757; }
+
 .theme {
   background: #62ff95; }
 
@@ -25,13 +28,62 @@
 body, h1, h2, h3, h4, h5, p, input, div, span {
   font-family: "Open Sans"; }
 
+.text-center {
+  text-align: center; }
+
+.fill-10 {
+  width: 10%; }
+
+.fill-20 {
+  width: 20%; }
+
+.fill-30 {
+  width: 30%; }
+
+.fill-40 {
+  width: 40%; }
+
+.fill-50 {
+  width: 50%; }
+
+.fill-60 {
+  width: 60%; }
+
+.fill-70 {
+  width: 70%; }
+
+.fill-80 {
+  width: 80%; }
+
+.fill-90 {
+  width: 90%; }
+
+.fill-100 {
+  width: 100%; }
+
+.input-button-left {
+  height: 40px; }
+  .input-button-left input, .input-button-left button, .input-button-left .btn {
+    height: inherit;
+    padding: 10px; }
+  .input-button-left .btn, .input-button-left button {
+    float: left; }
+
+.input-button-right {
+  height: 40px; }
+  .input-button-right input, .input-button-right button, .input-button-right .btn {
+    height: inherit;
+    padding: 10px; }
+  .input-button-right .btn, .input-button-right button {
+    float: right; }
+
 .list-view {
   list-style: none;
   margin-left: 0px;
   padding-left: 0px; }
   .list-view .list-item {
     list-style: none;
-    padding: 5px;
+    padding: 5px 15px;
     padding-top: 10px;
     border-bottom: 1px solid #f4f4f4; }
     .list-view .list-item:last-child {
@@ -51,7 +103,7 @@ body, h1, h2, h3, h4, h5, p, input, div, span {
       float: left;
       display: inline-block; }
       .list-view .list-item .detail-image img {
-        width: 100%;
+        width: 115%;
         height: auto;
         display: block; }
       .list-view .list-item .detail-image.round {
@@ -59,8 +111,14 @@ body, h1, h2, h3, h4, h5, p, input, div, span {
 
 .panel {
   border: 1px solid #DEDEDE; }
+  .panel .panel-heading {
+    background: #575757;
+    color: white;
+    padding: 10px 15px; }
+    .panel .panel-heading h1, .panel .panel-heading h2, .panel .panel-heading h3, .panel .panel-heading h4, .panel .panel-heading h5 {
+      font-weight: 800; }
   .panel input.form-control {
-    padding: 20px !important; }
+    padding: 15px !important; }
   .panel.shadow {
     box-shadow: 8px 8px #DEDEDE; }
 

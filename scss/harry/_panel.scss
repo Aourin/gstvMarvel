@@ -2,8 +2,16 @@ $shadow-size: 8px;
 
 .panel{
 	border: 1px solid #DEDEDE;
+	.panel-heading{
+		background: $theme-main-dark;
+		color: white;
+		padding: ($base-padding - 5px) $base-padding;
+		h1,h2,h3,h4,h5{
+			font-weight: 800;
+		}
+	}
 	input.form-control{
-		padding: $base-padding + 5px !important;
+		padding: $base-padding !important;
 	}
 	&.shadow{
 		box-shadow: $shadow-size $shadow-size $shadow-color;

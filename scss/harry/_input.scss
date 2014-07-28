@@ -1,0 +1,14 @@
+$input-button-height: 40px;
+$input-button-padding: 10px;
+@each $direction in (left,right){
+	.input-button-#{$direction}{
+		height: $input-button-height;
+		input,button,.btn{
+			height: inherit;
+			padding: $input-button-padding;
+		}
+		.btn,button{
+			float: $direction;
+		}
+	}
+}

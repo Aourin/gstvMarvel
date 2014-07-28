@@ -39,7 +39,8 @@ gulp.task('scripts', function() {
   	bower + 'angular/angular.min.js', 
   	bower + 'angular-bootstrap/ui-bootstrap.min.js',
   	bower + 'angular-resource/angular-resource.min.js',
-  	bower + 'angular-ui-router/release/angular-ui-router.min.js'])
+  	bower + 'angular-ui-router/release/angular-ui-router.min.js',
+  	bower + 'lodash/dist/lodash.min.js'])
     .pipe(concat('library.js'))
     .pipe(gulp.dest('./public/js/'));
 });

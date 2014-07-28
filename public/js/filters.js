@@ -1,3 +1,4 @@
+//Application filters
 appFilters
 	//Returns a filtered string to be the maxlength
 	.filter('truncate',function(){
@@ -6,5 +7,18 @@ appFilters
 				return data.substr(0,length) + '...';
 			else
 				return data;
+		}
+	})
+	//Builds an imagelocation or returns a default
+	.filter('imageLocation',function(){
+		return function(thumbnail){
+			if(thumbnail == (null || undefined)){
+				return 'http://i.annihil.us/u/prod/marvel/i/mg/b/40/image_not_available.jpg';
+			} else if(thumbnail.path !== undefined && thumbnail.extension !== undefined){
+				var path = thumbnail.path + '.' + thumbnail.extension;
+				return path;
+			}
+			else
+				return 'http://i.annihil.us/u/prod/marvel/i/mg/b/40/image_not_available.jpg';
 		}
 	})

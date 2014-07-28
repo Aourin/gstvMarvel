@@ -6,13 +6,17 @@ var app = angular.module('app',
 		'app.controllers',
 		'app.services',
 		'app.filters',
-		'ngResource'
+		'app.directives',
+		'ngResource',
+		'tag'
 	]
 ); 
 
 var appControllers = angular.module('app.controllers',[]);
 var appServices = angular.module('app.services',[]);
 var appFilters = angular.module('app.filters',[]);
+var appDirectives = angular.module('app.directives',[]);
+
 //Configuration and routing
 app.config(['$stateProvider','$urlRouterProvider',
 	function($stateProvider,$urlRouterProvider){
@@ -26,9 +30,13 @@ app.config(['$stateProvider','$urlRouterProvider',
 				url: '/app/characters',
 				templateUrl: 'partials/characters.list.html',
 				controller: 'CharacterListController'
+			})
+			.state('characters.show',{
+				url: '/:character_id',
+				templateUrl: 'partials/characters.show.html',
+				controller: 'CharacterShowController'
 			});
 
-		$urlRouterProvider.otherwise('app');
+		$urlRouterProvider.otherwise('characters');
 	}
 ]);
-

@@ -1,0 +1,14 @@
+
+//Text
+.text-center{
+	text-align: center;
+}
+
+$i: 10;
+//Width sizes
+@while $i <= 100{
+	.fill-#{$i}{
+		width: 0% + $i;
+		$i: $i + 10;
+	}
+}
