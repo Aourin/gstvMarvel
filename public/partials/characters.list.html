@@ -8,7 +8,7 @@
 			<div class="full-width input-button-right">
 				<button class="btn btn-primary fill-20" ng-click="search()"><i class="fa fa-search"></i> Find</button>
 				<input class="form-control fill-80" type="text" placeholder="Enter Name" 
-					on-press-enter="search()"
+					on-press-enter="search()" loading="loading"
 					ng-model="searchQuery">
 	  	 	</div>
 	  	 	<div class="base-padding" ng-if="characters == undefined">
@@ -31,9 +31,10 @@
 					</div>
 					<div class="details">
 						<h2 class="title">{{character.name}}</h2>
-						<p class="desc-block"><span class="color-{{character.comics.available | available: 50}}">Comics {{character.comics.available}}</span></p>
-						<p class="desc-block"><span class="color-{{character.series.available | available: 10}}">Series {{character.series.available}}</span></p>
-						<p class="desc-block"><span class="color-{{character.stories.available | available: 10}}">Stories {{character.stories.available}}</span></p>
+						<br>
+						<p class="desc-block padding-5"><span class="badge bg-{{character.comics.available | available: 100}}">Comics {{character.comics.available}}</span></p>
+						<p class="desc-block padding-5"><span class="badge bg-{{character.series.available | available: 20}}">Series {{character.series.available}}</span></p>
+						<p class="desc-block padding-5"><span class="badge bg-{{character.stories.available | available: 20}}">Stories {{character.stories.available}}</span></p>
 					</div>
 				</li>
 			</ul>

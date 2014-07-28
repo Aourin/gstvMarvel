@@ -1,12 +1,16 @@
 
-$color-red: red;
-$color-green: rgb(98, 255, 149);
+$color-red: rgb(255, 111, 111);
+$color-green: rgb(83, 176, 83);
 $color-green-alt: $color-green * .5;
 $color-charcoal: rgb(87, 87, 87);
 $color-blue: #3073a9;
 $color-blue-alt: #4C91AC;
 $color-blue-alt-2: #428bca;
+$color-light-blue: #58A4E6;
 $color-gray: #999;
+$color-purple: rgb(204, 108, 255);
+$color-orange: rgb(255, 169, 108);
+$color-yellow: rgb(255, 227, 108);
 
 $theme-main: $color-blue-alt-2;
 $theme-main-shadow: $color-blue-alt;
@@ -14,7 +18,7 @@ $theme-main-trim-dark: $theme-main - #033;
 $theme-main-trim-light: $theme-main + #2C2;
 $theme-main-highlight: $color-blue;
 $theme-main-highlight-2: $color-blue-alt;
-
+$theme-main-light: $color-light-blue;
 $theme-main-dark: $color-charcoal;
 $shadow-color: #DEDEDE;
 
@@ -27,11 +31,19 @@ $shadow-color: #DEDEDE;
 .theme{
 	background: $theme-main;
 }
+.bg-red{background: $color-red}
+.bg-green{background: $color-green}
+.bg-blue{background: $color-blue}
+.bg-white{background:white}
+.bg-purple{background: $color-purple}
+.bg-yellow{background: $color-yellow}
+.bg-orange{background: $color-orange}
+.bg-gray{background: $color-gray}
 
-.color-red{color:red}
-.color-green{color:green}
-.color-blue{color:blue}
+.color-red{color: $color-red}
+.color-green{color: $color-green}
+.color-blue{color: $color-blue}
 .color-white{color:white}
-.color-purple{color:purple}
-.color-yellow{color:yellow}
-.color-orange{color:orange}
+.color-purple{color: $color-purple}
+.color-yellow{color: $color-yellow}
+.color-orange{color: $color-orange}

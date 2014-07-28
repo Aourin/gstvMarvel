@@ -1,5 +1,5 @@
 .bg-red {
-  background: red; }
+  background: #ff6f6f; }
 
 .bg-charcoal {
   background: #575757; }
@@ -7,26 +7,50 @@
 .theme {
   background: #428bca; }
 
+.bg-red {
+  background: #ff6f6f; }
+
+.bg-green {
+  background: #53b053; }
+
+.bg-blue {
+  background: #3073a9; }
+
+.bg-white {
+  background: white; }
+
+.bg-purple {
+  background: #cc6cff; }
+
+.bg-yellow {
+  background: #ffe36c; }
+
+.bg-orange {
+  background: #ffa96c; }
+
+.bg-gray {
+  background: #999; }
+
 .color-red {
-  color: red; }
+  color: #ff6f6f; }
 
 .color-green {
-  color: green; }
+  color: #53b053; }
 
 .color-blue {
-  color: blue; }
+  color: #3073a9; }
 
 .color-white {
   color: white; }
 
 .color-purple {
-  color: purple; }
+  color: #cc6cff; }
 
 .color-yellow {
-  color: yellow; }
+  color: #ffe36c; }
 
 .color-orange {
-  color: orange; }
+  color: #ffa96c; }
 
 .base-padding {
   padding: 15px; }
@@ -144,6 +168,9 @@ body, h1, h2, h3, h4, h5, p, input, div, span {
     padding: 5px 15px;
     padding-top: 10px;
     border-bottom: 1px solid #f4f4f4; }
+    .list-view .list-item:hover {
+      background: #3073a9;
+      color: white; }
     .list-view .list-item:last-child {
       border-bottom: none; }
     .list-view .list-item .details {
@@ -181,17 +208,17 @@ body, h1, h2, h3, h4, h5, p, input, div, span {
     box-shadow: 8px 8px #DEDEDE; }
 
 .nav-pills {
-  background: #4C91AC; }
+  background: #428bca; }
   .nav-pills .pill {
     padding: 15px;
     color: white;
     font-size: 20px; }
     .nav-pills .pill.active {
       font-weight: 800;
-      background: #3073a9;
+      background: #58A4E6;
       color: white; }
     .nav-pills .pill:hover {
-      background: #28608d; }
+      background: #4989c0; }
 
 .header {
   background: #428bca;

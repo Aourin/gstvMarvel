@@ -1,3 +1,7 @@
+/**
+*
+*/
+
 //Application module and dependencies
 var app = angular.module('app',
 	[
@@ -11,7 +15,7 @@ var app = angular.module('app',
 		'tag'
 	]
 ); 
-
+//Init app Components
 var appControllers = angular.module('app.controllers',[]);
 var appServices = angular.module('app.services',[]);
 var appFilters = angular.module('app.filters',[]);
@@ -20,12 +24,7 @@ var appDirectives = angular.module('app.directives',[]);
 //Configuration and routing
 app.config(['$stateProvider','$urlRouterProvider',
 	function($stateProvider,$urlRouterProvider){
-		$stateProvider.
-			state('home',{
-				url: '/app',
-				template: 'moo',
-				controller: 'MainController'
-			})
+		$stateProvider
 			.state('characters',{
 				url: '/app/characters',
 				templateUrl: 'partials/characters.list.html',
@@ -37,6 +36,6 @@ app.config(['$stateProvider','$urlRouterProvider',
 				controller: 'CharacterShowController'
 			});
 
-		$urlRouterProvider.otherwise('characters');
+		$urlRouterProvider.otherwise('/app/characters');
 	}
 ]);

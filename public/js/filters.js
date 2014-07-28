@@ -26,14 +26,16 @@ appFilters
 	.filter('available',function(){
 		return function(available,total){
 			if(available <= 0)
-				return 'red';
-			else if(available <= total / 4 && available > 0)
-				return 'black';
+				return 'red'; //Zero
+			else if(available <= total / 4 && available > 0) 
+				return 'gray'; //Small - 0%-25%
 			else if(available >= total / 4 && available < total / 2)
-				return 'orange';
+				return 'orange'; //Many 25%-50%
 			else if(available >= total / 2 && available < total * .75)
-				return 'green';
-			else if(available >= total * .75)
+				return 'green'; //Good and Plenty  50%-70%
+			else if(available >= total * .75 && available < total * .9)
+				return 'blue'; //Thats a lot of lemonheads 75%
+			else if(available >= total * .9)
 				return 'purple';
 		}
 	})

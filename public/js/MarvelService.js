@@ -14,12 +14,13 @@ appServices.service("Marvel",["$rootScope","$resource","Tag","$q",
 		//initializes the character collection via localStorage
 		var characters = localStorage.getItem('characters');
 		this.characters =  characters !== undefined ? angular.fromJson(characters) : undefined;
-
+		
 		//CharacterList resource
 		this.CharactersList = $resource(api.Characters,{
 			id: "@id",
 			name: "@name"
 		});
+		//Character Comics Resource
 		this.Comics = $resource(api.Comics,{
 			id: "@id"
 		});
@@ -49,12 +50,9 @@ appServices.service("Marvel",["$rootScope","$resource","Tag","$q",
 			this.CharactersList.get({name: name,offset:offset})
 				.$promise.then(
 					function(charactersIn){
-						Tag.log("retrieved charactersList promise");
-						Tag.log(charactersIn);
+						Tag.log("Retrieved charactersList Promise");
 						localStorage.setItem('characters',angular.toJson(charactersIn.data));
-						console.log(self.characters);
 						self.characters = charactersIn.data;
-						console.log(self.characters);
 						deferred.resolve(self.characters);
 				},
 					function(response){
@@ -69,10 +67,9 @@ appServices.service("Marvel",["$rootScope","$resource","Tag","$q",
 			this.Comics.get({id: id})
 				.$promise.then(
 					function(comics){
-						Tag.log("retrieved comics comics promise");
+						Tag.log("Retrieved Characters Comics");
 						Tag.log(comics);
 						self.comics = comics.data;
-						localStorage.setItem('comics',angular.toJson(comics.data));
 						deferred.resolve(self.comics);
 				},
 					function(response){
@@ -83,7 +80,7 @@ appServices.service("Marvel",["$rootScope","$resource","Tag","$q",
 		}
 		//Show the character from the local character collection
 		this.showCharacter = function(id){
-			console.log(this.characters);
+			Tag.log("Retrieve character Locally");
 			return _.findWhere(self.characters,{id: parseInt(id)});
 		}
 	}
@@ -98,5 +95,3 @@ function MarvelApi(options){
 	this.Characters = this.apiPath + "/characters/:id";
 	this.Comics = this.Characters + "/comics";
 }
-var moo;
-var charas;
