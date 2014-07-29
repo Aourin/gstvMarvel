@@ -1,9 +1,4 @@
 appControllers
-	.controller('MainController',[
-		function(){
-			console.log('main');
-		}
-	])
 	//Character List Controller
 	.controller('CharacterListController', ['$scope','Marvel','Tag','$q',
 		function($scope,Marvel,Tag,$q){
@@ -13,13 +8,16 @@ appControllers
 			$scope.search = function(){
 				var name = $scope.searchQuery;
 				console.log(name);
+				//Creates a promie on the Marvel service to retrieve characters
 				var promise = Marvel.getCharacters(name);
 				$scope.loading = true;
 				promise.then(
+					//Successful promise sets the characters collection
 					function(characters){
 						$scope.characters = characters;
 						$scope.loading = false;
 					},
+					//Failed/Rjected Promise
 					function(error){
 						$scope.error = error;
 						$scope.loading = false;
@@ -40,6 +38,7 @@ appControllers
 	.controller('CharacterShowController',['$scope','$stateParams','Marvel','Tag',
 		function($scope,$stateParams,Marvel,Tag){  
 			$scope.Tag = new Tag({tag: 'CharacterShowController:'});
+			//Randomizes some stats for display
 			$scope.stats = {};
 			$scope.stats.carry = Math.random() * 100;
 			$scope.stats.support = Math.random() * 100;
@@ -55,7 +54,7 @@ appControllers
 				var promise = Marvel.getCharacter($stateParams.character_id);
 				promise.then(function(character){
 					$scope.character = character;
-					$scope.getComics();
+					$scope.getComics();  //Once character is set, retrieve comics
 				},function(){
 					$state.go('characters');
 				});
@@ -70,6 +69,7 @@ appControllers
 				var promise = Marvel.getCharacterComics($scope.character.id);
 				$scope.loading = true;
 				promise.then(
+					//Successful Resolve of comics sets collection
 					function(comics){
 						$scope.comics = comics;
 						$scope.loading = false;
@@ -85,10 +85,9 @@ appControllers
 				$scope.Tag.log('char change');
 				$scope.getComics();
 			});
-
+			//Destroys characters watch
 			$scope.$on('destroy',function(){
 				characters();
 			})
 		}
 	]);
-	var chars;
