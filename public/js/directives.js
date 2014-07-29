@@ -12,7 +12,7 @@ appDirectives
 				angular.element(element).on('keydown',
 					function(event){
 						if(event.which === 13){
-							//Calls the bound function if not currentling loading
+							//Calls the bound function if not currently loading
 							if(!scope.loading)
 								scope.onPressEnter();
 
